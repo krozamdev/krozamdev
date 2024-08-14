@@ -1,3 +1,9 @@
+<a href="https://github.com/krozamdev">
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=krozamdev.krozamdev" />
+</a>
+
+<hr>
+
 - 👋 Hi, I’m @krozamdev
 - 👀 I’m interested in ...
 - 🌱 I’m currently learning ...
