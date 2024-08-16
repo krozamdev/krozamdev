@@ -2,6 +2,13 @@
   <img src="https://visitor-badge.laobi.icu/badge?page_id=krozamdev.krozamdev" />
 </a>
 
+<h2 align="center">⚡ Stats ⚡</h2>
+<br>
+<div align=center>
+  <img src="https://github-readme-stats-krozam.vercel.app/api?username=krozamdev&show_icons=true&include_all_commits=true&theme=tokyonight" /> <br/>
+  <img src="https://github-readme-stats-krozam.vercel.app/api/top-langs/?username=krozamdev&theme=tokyonight" />
+</div>
+
 <hr>
 
 - 👋 Hi, I’m @krozamdev
