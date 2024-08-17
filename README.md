@@ -50,6 +50,47 @@
   </table>
 </a>
 
+<!-- Streak stats (Light mode) -->
+<div align="center">
+  <a href="https://github.com/krozamdev#gh-light-mode-only">
+    <img
+       src="https://github-readme-streak-stats-phi-opal.vercel.app/?user=krozamdev&locale=en&type=svg&hide_border=true&fire=2d77dc&ring=2d77dc&currStreakLabel=000000"
+       alt="My GitHub streak stats"
+     />
+  </a>
+</div>
+
+
+<!-- Streak stats (Dark mode) -->
+<div align="center">
+  <a href="https://github.com/krozamdev#gh-dark-mode-only">
+    <img
+       src="https://github-readme-streak-stats-phi-opal.vercel.app/?user=krozamdev&background=0d1117&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=ffffff&sideLabels=ffffff&dates=ffffff&fire=2d77dc&ring=2d77dc&locale=en&type=svg&hide_border=true"
+       alt="My GitHub streak stats"
+     />
+  </a>
+</div>
+
+<!-- WakaTime stats (Light mode) -->
+<div align="center">
+  <a href="https://github.com/krozamdev#gh-light-mode-only">
+    <img
+        src="https://github-readme-stats-krozam.vercel.app/api/wakatime?username=krozamdev&layout=compact&hide_border=true&custom_title=WakaTime%20Stats%20%28Since%20Feb%2024%202024%29"
+        alt="My Wakatime stats"
+      />
+  </a>
+</div>
+
+<!-- WakaTime stats (Dark mode) -->
+<div align="center">
+  <a href="https://github.com/krozamdev#gh-dark-mode-only">
+    <img
+        src="https://github-readme-stats-krozam.vercel.app/api/wakatime?username=krozamdev&layout=compact&icon_color=2d77dc&title_color=2d77dc&text_color=ffffff&bg_color=0d1117&hide_border=true&custom_title=WakaTime%20Stats%20%28Since%20Feb%2024%202024%29"
+        alt="My Wakatime stats"
+      />
+  </a>
+</div>
+
 <hr>
 
 - 👋 Hi, I’m @krozamdev
