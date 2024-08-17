@@ -75,7 +75,7 @@
 <div align="center">
   <a href="https://github.com/krozamdev#gh-light-mode-only">
     <img
-        src="https://github-readme-stats-krozam.vercel.app/api/wakatime?username=krozamdev&layout=compact&hide_border=true&custom_title=WakaTime%20Stats%20%28Since%20Feb%2024%202024%29"
+        src="https://github-readme-stats-krozam.vercel.app/api/wakatime?username=krozamdev&layout=compact&hide_border=true&custom_title=WakaTime%20Stats%20%28Since%20Aug%2017%202024%29"
         alt="My Wakatime stats"
       />
   </a>
@@ -85,7 +85,7 @@
 <div align="center">
   <a href="https://github.com/krozamdev#gh-dark-mode-only">
     <img
-        src="https://github-readme-stats-krozam.vercel.app/api/wakatime?username=krozamdev&layout=compact&icon_color=2d77dc&title_color=2d77dc&text_color=ffffff&bg_color=0d1117&hide_border=true&custom_title=WakaTime%20Stats%20%28Since%20Feb%2024%202024%29"
+        src="https://github-readme-stats-krozam.vercel.app/api/wakatime?username=krozamdev&layout=compact&icon_color=2d77dc&title_color=2d77dc&text_color=ffffff&bg_color=0d1117&hide_border=true&custom_title=WakaTime%20Stats%20%28Since%20Aug%2017%202024%29"
         alt="My Wakatime stats"
       />
   </a>
