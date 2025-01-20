@@ -1,0 +1,102 @@
+name: Update Contributes and TIME.MD
+
+on:
+  schedule:
+    - cron: '0 23 * * *'  # daily at 23:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-time-md:
+    runs-on: ubuntu-latest
+
+    steps:
+      
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Generate branch name
+        id: generate_branch
+        run: |
+          # Generate the date and a random number
+          DATE=$(date -u +"%d-%m-%Y")
+          RANDOM_NUMBER=$(shuf -i 1000-9999 -n 1)
+          BRANCH_NAME="feature/no-ref/update-time-md-current-time-${DATE}-${RANDOM_NUMBER}"
+          
+          # Print the branch name
+          echo "Generated branch name: $BRANCH_NAME"
+          
+          # Save to output
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+
+      - name: Verify branch name
+        run: |
+          echo "Branch name: $BRANCH_NAME"
+          if [ -z "$BRANCH_NAME" ]; then
+            echo "Error: BRANCH_NAME is empty"
+            exit 1
+          fi
+
+      - name: Authenticate GitHub CLI
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+
+      - name: Setup Git
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Verify authentication with GitHub CLI
+        run: |
+          gh auth status
+          git remote -v
+
+      - name: Create new branch
+        run: |
+          # Create new branch with dynamic name
+          echo "Creating branch $BRANCH_NAME"
+          git checkout -b "$BRANCH_NAME"
+
+      - name: Update TIME.MD
+        run: |
+          echo "Current process completion time: $(date -u +"%Y-%m-%d %H:%M:%S")" > TIME.md
+
+      - name: Commit changes
+        run: |
+          # Generate CONTRIBUTORS from git log
+          CONTRIBUTORS=$(git log --format='%an <%ae>' | sort -u)
+          
+          # Update CONTRIBUTORS file
+          for CONTRIBUTOR in $CONTRIBUTORS; do
+            if ! grep -Fxq "$CONTRIBUTOR" CONTRIBUTORS; then
+              echo "$CONTRIBUTOR" >> CONTRIBUTORS
+            fi
+          done
+          
+          git add CONTRIBUTORS TIME.md
+      
+          git commit -m "chore: update TIME.MD and CONTRIBUTORS" --author="${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>"
+      
+      - name: Push branch to remote
+        run: |
+          echo "Pushing to remote..."
+          git push -u origin "$BRANCH_NAME"
+          echo "Push completed."
+      
+      - name: Create Pull Request
+        run: |
+          # Convert BRANCH_NAME to uppercase
+          UPPERCASE_BRANCH_NAME=$(echo "$BRANCH_NAME" | tr 'a-z' 'A-Z')
+          
+          gh pr create --title "Update Contributors and TIME.MD with current time $UPPERCASE_BRANCH_NAME" \
+            --body "This PR updates the TIME.MD file with the current process completion time." \
+            --base main \
+            --head "$BRANCH_NAME" \
+            --reviewer krozamdev \
+            --assignee krozamdev \
+            --label bot-action
+          
+          echo "Pull Request created successfully."
