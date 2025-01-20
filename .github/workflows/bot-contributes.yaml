@@ -10,7 +10,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  update-time-md:
+  update-contributes-and-time-md:
     runs-on: ubuntu-latest
 
     steps:
