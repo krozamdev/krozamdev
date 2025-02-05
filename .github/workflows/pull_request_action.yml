@@ -1,0 +1,47 @@
+name: Auto Approve & Merge PR
+
+on:
+  workflow_run:
+    workflows: ["Update Contributes and TIME.MD"]
+    types:
+      - completed
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+
+jobs:
+  auto-approve-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Authenticate GitHub CLI
+        run: |
+          echo "${{ secrets.PAT }}" | gh auth login --with-token
+
+      - name: Get PR Number (Only from GitHub Actions Bot)
+        id: pr_number
+        run: |
+          # Cari PR yang dibuat oleh app/github-actions
+          PR_NUMBER=$(gh pr list --state open --base main --json number,author --jq '[.[] | select(.author.login=="app/github-actions")][0].number')
+          
+          if [ -z "$PR_NUMBER" ]; then
+            echo "No PR found from GitHub Actions Bot"
+            exit 0
+          fi
+          
+          echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
+          echo "Found PR #$PR_NUMBER from GitHub Actions Bot"
+
+      - name: Approve PR
+        if: env.PR_NUMBER != ''
+        run: |
+          gh pr review $PR_NUMBER --approve
+
+      - name: Merge PR with squash
+        if: env.PR_NUMBER != ''
+        run: |
+          gh pr merge $PR_NUMBER --squash --delete-branch
