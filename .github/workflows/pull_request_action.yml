@@ -44,4 +44,4 @@ jobs:
       - name: Merge PR with squash
         if: env.PR_NUMBER != ''
         run: |
-          gh pr merge $PR_NUMBER --squash --delete-branch
+          gh pr merge $PR_NUMBER --squash --delete-branch --admin
